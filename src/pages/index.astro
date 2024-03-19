@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro'
+import tailyUI from 'taily-ui'
+---
+
+<Layout
+    title="Welcome to Scripty"
+    description="Practice-oriented educational platform for everyone who wants to learn JavaScript & WebDev."
+>
+    <main class="select-none overflow-hidden">
+        <fragment
+            set:html={tailyUI.OpenSourcePromo({
+                logo: '/favicon.svg',
+                title: 'Scripty',
+                color: 'ghost',
+                text: [
+                    { type: 'default', value: 'Create' },
+                    { type: 'primary', value: 'beautiful' },
+                    {
+                        type: 'default',
+                        value: 'web applications with exemplified lessons and interactive JavaScript'
+                    },
+                    { type: 'secondary', value: 'playgrounds' }
+                ],
+                description:
+                    'Practice-oriented educational platform for everyone who wants to learn JavaScript & WebDev.',
+                button: {
+                    title: 'Try sandbox',
+                    link: '/'
+                },
+                github: 'https://github.com/nikdelvin/scripty'
+            })}
+        />
+    </main>
+</Layout>
