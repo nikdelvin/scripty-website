@@ -26,9 +26,26 @@ import tailyUI from 'taily-ui'
                     'Practice-oriented educational platform for everyone who wants to learn JavaScript & WebDev.',
                 button: {
                     title: 'Try sandbox',
-                    link: '/'
+                    link: '#kpi'
                 },
                 github: 'https://github.com/nikdelvin/scripty'
+            })}
+        />
+        <fragment
+            id="kpi"
+            set:html={tailyUI.KPICards({
+                title: 'Deep dive into',
+                color: 'ghost',
+                cards: [
+                    { title: 'JS', description1: 'language', description2: 'specification' },
+                    { title: 'Web', description1: 'frameworks', description2: 'nutshell' },
+                    { title: 'Git', description1: 'command line', description2: 'tools' },
+                    { title: 'CI', description1: 'serverless', description2: 'deployment' }
+                ],
+                button: {
+                    title: 'Glance into abyss',
+                    link: '/'
+                }
             })}
         />
     </main>
