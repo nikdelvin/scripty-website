@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import tailyUI from 'taily-ui'
+import * as tailyUI from 'taily-ui'
 
 export async function getStaticPaths() {
     return [undefined, 'default', 'primary', 'secondary', 'success', 'warning', 'error', 'ghost'].map((theme) => ({
