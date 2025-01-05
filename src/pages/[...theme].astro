@@ -5,6 +5,23 @@ import * as tailyUI from 'taily-ui'
 const month = new Date().getMonth()
 const day = new Date().getDate()
 const year = new Date().getFullYear()
+const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
+function getDate(date: Date) {
+    return [date.getDate().toString(), monthNames[date.getMonth()], date.getFullYear().toString()]
+}
 export async function getStaticPaths() {
     return [undefined, 'default', 'primary', 'secondary', 'success', 'warning', 'error', 'ghost'].map((theme) => ({
         params: { theme }
@@ -30,7 +47,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                     { type: 'primary', value: 'beautiful' },
                     {
                         type: 'default',
-                        value: 'web applications with exemplified lessons and interactive JavaScript'
+                        value: 'web apps with exemplified lessons and interactive JavaScript'
                     },
                     { type: 'secondary', value: 'playgrounds' }
                 ],
@@ -58,6 +75,128 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                     title: 'Glance into abyss',
                     link: '/'
                 }
+            })}
+        />
+        <fragment
+            id="features"
+            set:html={tailyUI.FeatureCards({
+                title: 'Everyone can learn',
+                color: colorTheme,
+                reverse: false,
+                featureTitle: 'JavaScript',
+                featureDescription: [
+                    { type: 'default', value: 'But only' },
+                    { type: 'primary', value: 'few' },
+                    { type: 'default', value: 'are chosen to' },
+                    { type: 'primary', value: 'look' },
+                    { type: 'default', value: 'under the hood' }
+                ],
+                featureOptions: [
+                    'More than 100 practice-oriented lessons about JS, popular Web Frameworks, libraries, and dev tools',
+                    '10 example projects that explain a deep nutshell of frameworks such as React, Next.JS, Astro.JS, Svelte, Vue.JS, Nuxt.JS & vanilla Javascript bit by bit',
+                    'Deep dive tutorials into command line tools and CI/CD deployment with Git, Docker, and Jenkins'
+                ],
+                button: {
+                    title: 'Сross the line',
+                    link: '#features_2'
+                }
+            })}
+        />
+        <fragment
+            id="features_2"
+            set:html={tailyUI.FeatureCards({
+                title: 'The only way to do',
+                color: colorTheme,
+                reverse: true,
+                featureTitle: 'Great work',
+                featureDescription: [
+                    { type: 'default', value: 'Is to fall in' },
+                    { type: 'secondary', value: 'love' },
+                    { type: 'default', value: 'with the things that you are' },
+                    { type: 'secondary', value: 'doing' }
+                ],
+                featureOptions: [
+                    'Feature-rich coding playground built especially to test your skills in the most popular code practices',
+                    "Tailored roadmaps to guide you through your path from intern to senior, based on your goals, whether it's front-end, back-end, or full-stack development",
+                    'Connect with fellow learners, ask questions, share your progress, and get help from experienced devs'
+                ],
+                button: {
+                    title: 'Make the first step',
+                    link: '#stages'
+                }
+            })}
+        />
+        <fragment
+            id="stages"
+            set:html={tailyUI.Jobs({
+                title: 'Project roadmap',
+                color: colorTheme,
+                jobs: [
+                    {
+                        from: getDate(new Date()),
+                        to: getDate(new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000)),
+                        title: 'Phase I: Knowledge foundation',
+                        description: [
+                            { type: 'default', value: 'JavaScript' },
+                            { type: 'primary', value: 'fundamentals,' },
+                            { type: 'default', value: 'front-end' },
+                            { type: 'primary', value: 'basics' }
+                        ],
+                        role: [
+                            'Introduction to core concepts of JavaScript language including variables, data types, operators, control flow, functions & objects',
+                            'Basics of HTML 5, CSS 3, and concepts of how to build basic web pages, understanding of DOM and how JavaScript interacts with it',
+                            'Tailwind CSS, Bootstrap 5, Sass & PostCSS tutorials to understand advanced methods of web pages and web applications stylization'
+                        ]
+                    },
+                    {
+                        from: getDate(new Date(Date.now() + (3 * 30 + 1) * 24 * 60 * 60 * 1000)),
+                        to: getDate(new Date(Date.now() + (6 * 30 + 1) * 24 * 60 * 60 * 1000)),
+                        title: 'Phase II: Framework exploration',
+                        description: [
+                            { type: 'default', value: 'Fundamentals of' },
+                            { type: 'primary', value: 'React' },
+                            { type: 'default', value: '& other' },
+                            { type: 'primary', value: 'frameworks' }
+                        ],
+                        role: [
+                            'Basics of React web framework including components, props, state & JSX. Detailed tutorial for building a simple React application',
+                            'Introduction to other popular frameworks like Next.JS, Vue.JS, and Svelte. Understand their core concepts and build basic applications',
+                            '1 code project to learn how to use only vanilla JavaScript to solidify your understanding of language without relying on frameworks'
+                        ]
+                    },
+                    {
+                        from: getDate(new Date(Date.now() + (6 * 30 + 2) * 24 * 60 * 60 * 1000)),
+                        to: getDate(new Date(Date.now() + (9 * 30 + 2) * 24 * 60 * 60 * 1000)),
+                        title: 'Phase III: Server-side advantage',
+                        description: [
+                            { type: 'default', value: 'Introduction to' },
+                            { type: 'primary', value: 'back-end' },
+                            { type: 'default', value: 'with' },
+                            { type: 'primary', value: 'Node.JS' }
+                        ],
+                        role: [
+                            'Lessons to explore server-side JavaScript with Node.js and learn about APIs, databases, and building a simple backend application',
+                            'Basics of work with Postman, Insomnia, Swagger, and other tools for developing API documentation, back-end testing environment',
+                            'Utilization tools of Scripty coding playground to practice and refine your skills with challenges such as code katas and daily tasks'
+                        ]
+                    },
+                    {
+                        from: getDate(new Date(Date.now() + (9 * 30 + 3) * 24 * 60 * 60 * 1000)),
+                        to: getDate(new Date(Date.now() + (12 * 30 + 3) * 24 * 60 * 60 * 1000)),
+                        title: 'Phase IV: Deployment & community',
+                        description: [
+                            { type: 'default', value: 'CI/CD setup for your' },
+                            { type: 'primary', value: 'first' },
+                            { type: 'default', value: 'full-stack' },
+                            { type: 'primary', value: 'project' }
+                        ],
+                        role: [
+                            '10 practice-oriented lessons to learn how to automate the building, testing, and deployment of your applications using CI/CD tools',
+                            '2 code projects to learn how to combine your front-end and back-end knowledge to create and deploy a complete web application',
+                            'Chats integration to give users ability to join community forums, connect with other learners, ask questions & share their projects'
+                        ]
+                    }
+                ]
             })}
         />
         <fragment
@@ -137,7 +276,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: 'Brodly', link: 'https://brodly.by.nikdelv.in', newPage: true },
                             {
                                 type: 'default',
-                                value: '<br/>High-secure and fully anonymous live streaming platform for everyone'
+                                value: '<br/>High-secure and fully anonymous live-streaming platform for everyone'
                             },
                             { type: 'default', value: '<div style="padding:8px;"></div>' },
                             { type: 'primary', value: 'Neuroly', link: 'https://neuroly.by.nikdelv.in', newPage: true },
@@ -150,7 +289,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: 'Scripty', link: 'https://scripty.by.nikdelv.in', newPage: true },
                             {
                                 type: 'default',
-                                value: '<br/>Practice-oriented educational platform to learn JavaScript & WebDev'
+                                value: '<br/>Practice-oriented educational platform to learn JavaScript'
                             },
                             { type: 'default', value: '<div style="padding:8px;"></div>' },
                             { type: 'primary', value: 'Feelicy', link: 'https://feelicy.by.nikdelv.in', newPage: true },
@@ -179,7 +318,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: 'Role:' },
                             { type: 'default', value: 'Team leader / DevOps / Backend developer.' },
                             { type: 'primary', value: 'Product:' },
-                            { type: 'default', value: 'Cross-platform mobile app & internal ERP system.' },
+                            { type: 'default', value: 'Cross-platform mobile app, internal ERP system.' },
                             { type: 'primary', value: 'Info', link: 'https://bso.ae', newPage: true },
                             { type: 'default', value: '<div style="padding:8px;"></div>' },
                             { type: 'primary', value: '19.01.21 - 11.05.22:' },
@@ -196,7 +335,12 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'default', value: 'Fullstack React / Python web developer.' },
                             { type: 'primary', value: 'Product:' },
                             { type: 'default', value: 'Big-data service for analyzing counterparties affiliations.' },
-                            { type: 'primary', value: 'Info', link: 'https://github.com/nikdelvin', newPage: true },
+                            {
+                                type: 'primary',
+                                value: 'Info',
+                                link: 'https://github.com/nikdelvin/affiliation-checker',
+                                newPage: true
+                            },
                             { type: 'default', value: '<div style="padding:8px;"></div>' },
                             { type: 'default', value: 'Total time on development "battlefield":' },
                             {
@@ -226,7 +370,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: 'Libraries:' },
                             {
                                 type: 'default',
-                                value: 'Bootstrap, Tailwind, Formik, Redux, Recoil, MUI, Framer, Three JS'
+                                value: 'Bootstrap, Tailwind, Formik, Redux, Recoil, GSAP, Framer, Three.JS'
                             },
                             { type: 'default', value: '<div style="padding:8px;"></div>' },
                             { type: 'default', value: 'And more other deeply learned' },
@@ -239,7 +383,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: '04.08.20:' },
                             {
                                 type: 'default',
-                                value: 'Modified genetic algorithm as a new approach for solving the problem of 3d packaging.'
+                                value: 'Modified genetic algorithm to solve 3d packaging problem.'
                             },
                             {
                                 type: 'primary',
@@ -251,7 +395,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                             { type: 'primary', value: '24.12.21:' },
                             {
                                 type: 'default',
-                                value: 'Development of an information system for organizing the work of a production workshop.'
+                                value: 'Auto-optimization system for product manufacturing workflow.'
                             },
                             {
                                 type: 'primary',
@@ -267,6 +411,14 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                                 value: 'Read',
                                 link: 'https://ieeexplore.ieee.org/document/10303830',
                                 newPage: true
+                            },
+                            { type: 'default', value: '<div style="padding:8px;"></div>' },
+                            { type: 'default', value: 'Researches open-source repo:' },
+                            {
+                                type: 'primary',
+                                value: 'GitHub',
+                                link: 'https://github.com/nikdelvin/research-projects',
+                                newPage: true
                             }
                         ]
                     }
@@ -275,3 +427,23 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
         />
     </main>
 </Layout>
+<style is:global>
+    :root::-webkit-scrollbar {
+        display: none !important;
+    }
+    :root::-webkit-scrollbar-thumb {
+        background-color: transparent !important;
+    }
+    :root::-webkit-scrollbar-track {
+        background-color: transparent !important;
+    }
+    .overflow-x-scroll::-webkit-scrollbar {
+        display: none !important;
+    }
+    .overflow-x-scroll::-webkit-scrollbar-thumb {
+        background-color: transparent !important;
+    }
+    .overflow-x-scroll::-webkit-scrollbar-track {
+        background-color: transparent !important;
+    }
+</style>
