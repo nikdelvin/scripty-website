@@ -294,7 +294,7 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
                         ]
                     },
                     {
-                        title: 'Coming soon',
+                        title: 'Platforms',
                         text: [
                             { type: 'primary', value: 'Scripty', link: 'https://scripty.by.nikdelv.in', newPage: true },
                             {
@@ -452,3 +452,49 @@ const colorTheme = (theme as 'default' | 'primary' | 'secondary' | 'success' | '
         background-color: transparent !important;
     }
 </style>
+<script define:vars={{ monthNames }}>
+    function getDate(date) {
+        return [date.getDate().toString(), monthNames[date.getMonth()], date.getFullYear().toString()]
+    }
+    const month = new Date().getMonth()
+    const day = new Date().getDate()
+    const year = new Date().getFullYear()
+    const from0 = getDate(new Date())
+    const to0 = getDate(new Date(Date.now() + 3 * 30 * 24 * 60 * 60 * 1000))
+    const from1 = getDate(new Date(Date.now() + (3 * 30 + 1) * 24 * 60 * 60 * 1000))
+    const to1 = getDate(new Date(Date.now() + (6 * 30 + 1) * 24 * 60 * 60 * 1000))
+    const from2 = getDate(new Date(Date.now() + (6 * 30 + 2) * 24 * 60 * 60 * 1000))
+    const to2 = getDate(new Date(Date.now() + (9 * 30 + 2) * 24 * 60 * 60 * 1000))
+    const from3 = getDate(new Date(Date.now() + (9 * 30 + 3) * 24 * 60 * 60 * 1000))
+    const to3 = getDate(new Date(Date.now() + (12 * 30 + 3) * 24 * 60 * 60 * 1000))
+    document.querySelector('#job-0-from-0').textContent = from0[0]
+    document.querySelector('#job-0-from-1').textContent = from0[1]
+    document.querySelector('#job-0-from-2').textContent = from0[2]
+    document.querySelector('#job-1-from-0').textContent = from1[0]
+    document.querySelector('#job-1-from-1').textContent = from1[1]
+    document.querySelector('#job-1-from-2').textContent = from1[2]
+    document.querySelector('#job-2-from-0').textContent = from2[0]
+    document.querySelector('#job-2-from-1').textContent = from2[1]
+    document.querySelector('#job-2-from-2').textContent = from2[2]
+    document.querySelector('#job-3-from-0').textContent = from3[0]
+    document.querySelector('#job-3-from-1').textContent = from3[1]
+    document.querySelector('#job-3-from-2').textContent = from3[2]
+    document.querySelector('#job-0-to-0').textContent = to0[0]
+    document.querySelector('#job-0-to-1').textContent = to0[1]
+    document.querySelector('#job-0-to-2').textContent = to0[2]
+    document.querySelector('#job-1-to-0').textContent = to1[0]
+    document.querySelector('#job-1-to-1').textContent = to1[1]
+    document.querySelector('#job-1-to-2').textContent = to1[2]
+    document.querySelector('#job-2-to-0').textContent = to2[0]
+    document.querySelector('#job-2-to-1').textContent = to2[1]
+    document.querySelector('#job-2-to-2').textContent = to2[2]
+    document.querySelector('#job-3-to-0').textContent = to3[0]
+    document.querySelector('#job-3-to-1').textContent = to3[1]
+    document.querySelector('#job-3-to-2').textContent = to3[2]
+    document.querySelector('#block-4-0').textContent =
+        `17.05.22 - ${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${String(year).slice(2)}: `
+    document.querySelector('#block-4-25').textContent =
+        `${Math.floor((Date.now() - Date.parse('25 May 2019 00:00:00 GMT')) / (1000 * 60 * 60 * 24) / 365)} `
+    document.querySelector('#block-4-27').textContent =
+        `${Math.floor(((Date.now() - Date.parse('25 May 2019 00:00:00 GMT')) / (1000 * 60 * 60 * 24)) % 365)} `
+</script>
